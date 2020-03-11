@@ -12,19 +12,24 @@ class Form extends Component {
         this.state = {
             name: "",
             URL: ""
-        }
+        };
     }
 
-    handleChange = event => {
-        /*
-            TODO - Logic for changing state based on form changes
-        */
-    }
+    // handleChange = event => {
+    //     /*
+    //         TODO - Logic for changing state based on form changes
+    //     */
+
+    //     const { name, value } = event.target;
+
+    //     this.setState({ [name]: value });
+    // }
 
     updateNameLabel = (event) => {
-        this.setState({
-            name: event.target.value
-        })
+        
+        const { name, value } = event.target;
+
+        this.setState({ [name]: value });
     }
 
     onFormSubmit = (event) => {
@@ -33,21 +38,31 @@ class Form extends Component {
         /*
             TODO - Logic for calling props to handle submission and setting state changes
         */
-       this.props.handleSubmit(this.state)
+        this.props.handleSubmit(this.state);
+
+        this.setState({
+           name: "",
+           URL: ""
+        });
 
     }
 
     render() {
 
+        const { name, URL } = this.state;
+
         return(
-            <form>
-                {/* TODO - Logic for returning a form element with labels and inputs for link name and URL */}
-                <label for="name">Name</label>
-                <input 
+            <form onSubmit={this.onFormSubmit}>
+                // TODO - Logic for returning a form element with labels and inputs for link name and URL
+                <label for="name">Name:</label>
+                <input
                     type="text" 
-                    value={this.state.name} 
-                    onChange={this.updateNameLabel}>
-                </input>
+                    id="name"
+                    value={name} 
+                    onChange={this.updateNameLabel}
+                />
+
+                
 
                 <input type="submit" value="Submit"></input>
             </form>
