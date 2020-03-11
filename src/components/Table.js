@@ -21,7 +21,7 @@ const TableBody = props => {
             <tr key={index}>
                 <td>{row.name}</td>
                 <td><a href={row.URL}>{row.URL}</a></td>
-                <td><button onClick={() => props.removeLink(index)}>Delete</button></td>
+                <td><button onClick={() => props.removeLink(index)}>X</button></td>
             </tr>
         );
     });
@@ -39,7 +39,6 @@ const Table = (props) => {
             <TableBody linkData={linkData} removeLink={removeLink} />
         </table>
     )
-
 }
 
 export default Table;
